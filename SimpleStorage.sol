@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.8; // version of solidity, if this show an error make sure you change your version in compiler
+pragma solidity ^0.8.7; // version of solidity, if this show an error make sure you change your version in compiler
 
 contract SimpleStorage {
     // just like the class in java
