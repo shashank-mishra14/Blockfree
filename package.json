@@ -1,9 +1,10 @@
 {
   "dependencies": {
+    "ethers": "^6.6.7",
     "node": "^20.5.0",
     "solc": "^0.8.7-fixed"
   },
   "scripts": {
-    "compile":"npx solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol"
+    "compile": "npx solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol"
   }
 }

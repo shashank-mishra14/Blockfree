@@ -1,20 +1,16 @@
- async function main(){
-    const [deployer] = await ethers.getSigners();
-    console.log("Deploying contracts with the account:", deployer.address);
-    console.log("Account balance:", (await deployer.getBalance()).toString());
-    const Token = await ethers.getContractFactory("Token");
-    const token = await Token.deploy();
-    console.log("Token address:", token.address);
-    const TokenFarm = await ethers.getContractFactory("TokenFarm");
-    const tokenFarm = await TokenFarm.deploy(token.address);
-    console.log("TokenFarm address:", tokenFarm.address);
-    await token.transfer(tokenFarm.address, "1000000000000000000000000");
-    console.log("Done!");
- }
+const ethers = require("ethers");
 
- main()
- .then(() => process.exit(0))
- .catch((error) => {
-        console.error(error);
-        process.exit(1);
-    });
+async function main() {
+  const provider = new ethers.providers.JsonRpcProvider("http://0.0.0.0:8545"); //connect to local blockchain
+  const wallet = new ethers.Wallet(
+    "0x0123456789012345678901234567890123456789012345678901234567890123",
+    provider
+  ); //connect to wallet
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
