@@ -5,7 +5,7 @@ async function main() {
     "http://localhost:8545"
   ); //connect to local blockchain
   const wallet = new ethers.Wallet(
-    "0x0123456789012345678901234567890123456789012345678901234567890123",
+    process.env.PRIVATE_KEY,
     provider
   ); //connect to wallet
   const abi = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.abi", "utf-8"); //read abi
@@ -38,7 +38,8 @@ async function main() {
   console.log(`Current Fav Number: ${currentFavoriteNumber.toString()}`);
   const TrancsactionResponse = await contract.store(10);
   const trancsactionReceipt = await TrancsactionResponse.wait(1);
-  console.log(trancsactionReceipt);
+  const updatedFavoriteNumber = await contract.retrieve();
+  console.log(`Updated Favorite Number: ${updatedFavoriteNumber}`);
 }
 
 main()
