@@ -2,7 +2,7 @@ const ethers = require("ethers");
 const fs = require("fs-extra");
 async function main() {
   const provider = new ethers.providers.JsonRpcProvider(
-    "http://localhost:8545"
+    process.env.RPC_URL
   ); //connect to local blockchain
   const wallet = new ethers.Wallet(
     process.env.PRIVATE_KEY,

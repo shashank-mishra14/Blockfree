@@ -1879,3 +1879,6 @@ node_modules/universalify/LICENSE
 node_modules/universalify/package.json
 node_modules/universalify/README.md
 node_modules
+.env
+.env
+.encryptedKey.json
