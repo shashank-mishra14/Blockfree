@@ -38,6 +38,7 @@ async function main() {
   console.log(`Current Fav Number: ${currentFavoriteNumber.toString()}`);
   const TrancsactionResponse = await contract.store(10);
   const trancsactionReceipt = await TrancsactionResponse.wait(1);
+  console.log(trancsactionReceipt);
 }
 
 main()
