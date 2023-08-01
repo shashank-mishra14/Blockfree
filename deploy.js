@@ -4,10 +4,16 @@ async function main() {
   const provider = new ethers.providers.JsonRpcProvider(
     process.env.RPC_URL
   ); //connect to local blockchain
-  const wallet = new ethers.Wallet(
-    process.env.PRIVATE_KEY,
-    provider
-  ); //connect to wallet
+  // const wallet = new ethers.Wallet(
+  //   process.env.PRIVATE_KEY,
+  //   provider
+  // ); //connect to wallet
+  const encryptedJson = fs.readFileSync("./.encryptedKey.json", "utf8");
+  let wallet = new ethers.Wallet.fromEncryptedJson( // using let so that we can connect wallet to metamask
+    encryptedJson,
+    process.env.PRIVATE_KEY_PASSWORD
+  ); // creating a wallet from encrypted key
+  wallet = await wallet.connect(provider); //connect wallet to provider
   const abi = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.abi", "utf-8"); //read abi
   const binary = fs.readFileSync(
     "./SimpleStorage_sol_SimpleStorage.bin",
